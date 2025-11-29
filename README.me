@@ -1,69 +1,35 @@
-# Sistem Perpustakaan Berbasis OOP PHP
+# 📚 Sistem Perpustakaan OOP
 
-Aplikasi sederhana manajemen perpustakaan yang dibangun menggunakan Native PHP dengan paradigma **Object-Oriented Programming (OOP)**. Proyek ini dibuat untuk memenuhi tugas mata kuliah Pemrograman Berorientasi Objek.
+![PHP](https://img.shields.io/badge/Language-PHP%208-777BB4?style=for-the-badge&logo=php)
+![MySQL](https://img.shields.io/badge/Database-MySQL-4479A1?style=for-the-badge&logo=mysql)
+![Bootstrap](https://img.shields.io/badge/Frontend-Bootstrap%205-7952B3?style=for-the-badge&logo=bootstrap)
+![License](https://img.shields.io/github/license/nama-anda/sistem-perpustakaan-oop?style=for-the-badge)
 
-## 📋 Fitur & Konsep OOP
-Aplikasi ini menerapkan konsep-konsep kunci OOP:
-- **Class & Object**: Pemodelan entitas Buku, Member, dan Pustakawan.
-- **Encapsulation**: Properti private dan method public (Getter/Setter).
-- **Inheritance**: `Member` dan `Librarian` mewarisi class `Person`.
-- **Polymorphism/Interface**: Implementasi interface `IPersistable` dan `ILoanable`.
-- **Abstract Class**: Class `Person` sebagai kerangka dasar.
-- **Exception Handling**: Menangani error stok habis (`StockEmptyException`) dan buku tidak ditemukan.
-
-## 🛠️ Teknologi
-- PHP 8.x
-- MySQL / MariaDB (via Laragon/XAMPP)
-- PDO (PHP Data Objects)
-
-## 🚀 Cara Instalasi
-1. Clone repository ini:
-   ```bash
-   git clone [https://github.com/USERNAME_ANDA/sistem-perpustakaan-oop.git](https://github.com/USERNAME_ANDA/sistem-perpustakaan-oop.git)
-Buat database baru di MySQL bernama db_perpustakaan.
-
-Import file database.sql yang ada di folder ini ke database tersebut.
-
-Sesuaikan konfigurasi database di config/Database.php jika perlu.
-
-Buka project di browser (misal: http://localhost/sistem-perpustakaan).
-
-📂 Struktur Folder
-Plaintext
-
-sistem-perpustakaan/
-|-- config/          # Koneksi Database
-|-- src/
-|   |-- Abstracts/   # Class Abstrak (Person)
-|   |-- Entities/    # Class Utama (Book, Member, dll)
-|   |-- Exceptions/  # Custom Error Handling
-|   |-- Interfaces/  # Kontrak Interface
-|-- database.sql     # File Import SQL
-|-- index.php        # Entry Point
+Sistem Informasi Manajemen Perpustakaan sederhana yang menerapkan konsep **Object-Oriented Programming (OOP)** secara murni.
 
 ---
 
-### 4. Eksekusi Upload ke GitHub (Terminal)
+## ✨ Fitur Utama
+| Konsep OOP | Implementasi pada Kode |
+| :--- | :--- |
+| **Inheritance** | `Member extends Person`, `Librarian extends Person` |
+| **Interface** | `IPersistable` (CRUD), `ILoanable` (Transaksi) |
+| **Encapsulation** | Properti `private` pada Database & Book |
+| **Exception** | Custom error handling untuk stok habis |
 
-Sekarang folder Anda sudah lengkap (ada Source Code + SQL + Gitignore + Readme). Saatnya kirim ke GitHub.
+## 📸 Screenshot
+*(Tempel link gambar screenshot aplikasi yang sudah pakai Bootstrap di sini)*
 
-Buka Terminal VS Code (`Ctrl + ~`), lalu jalankan perintah ini satu per satu:
+## ⚙️ Persyaratan Sistem
+* PHP >= 8.0
+* Web Server (Apache/Nginx)
+* MySQL / MariaDB
 
-```powershell
-# 1. Pastikan di folder proyek
-git init
+## 🚀 Instalasi
+1. Clone repo ini.
+2. Import `database.sql` ke MySQL.
+3. Atur koneksi di `config/Database.php`.
+4. Buka di browser.
 
-# 2. Masukkan semua file (termasuk SQL dan Readme yg baru dibuat)
-git add .
-
-# 3. Simpan perubahan
-git commit -m "First commit: Sistem Perpustakaan OOP Lengkap"
-
-# 4. Ganti nama cabang utama
-git branch -M main
-
-# 5. Hubungkan ke GitHub (GANTI URL DI BAWAH DENGAN LINK REPO ANDA)
-git remote add origin https://github.com/USERNAME_ANDA/sistem-perpustakaan-oop.git
-
-# 6. Kirim!
-git push -u origin main
+---
+Created with ❤️ by **[CACA]**
