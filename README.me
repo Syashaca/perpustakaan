@@ -1,0 +1,69 @@
+# Sistem Perpustakaan Berbasis OOP PHP
+
+Aplikasi sederhana manajemen perpustakaan yang dibangun menggunakan Native PHP dengan paradigma **Object-Oriented Programming (OOP)**. Proyek ini dibuat untuk memenuhi tugas mata kuliah Pemrograman Berorientasi Objek.
+
+## 📋 Fitur & Konsep OOP
+Aplikasi ini menerapkan konsep-konsep kunci OOP:
+- **Class & Object**: Pemodelan entitas Buku, Member, dan Pustakawan.
+- **Encapsulation**: Properti private dan method public (Getter/Setter).
+- **Inheritance**: `Member` dan `Librarian` mewarisi class `Person`.
+- **Polymorphism/Interface**: Implementasi interface `IPersistable` dan `ILoanable`.
+- **Abstract Class**: Class `Person` sebagai kerangka dasar.
+- **Exception Handling**: Menangani error stok habis (`StockEmptyException`) dan buku tidak ditemukan.
+
+## 🛠️ Teknologi
+- PHP 8.x
+- MySQL / MariaDB (via Laragon/XAMPP)
+- PDO (PHP Data Objects)
+
+## 🚀 Cara Instalasi
+1. Clone repository ini:
+   ```bash
+   git clone [https://github.com/USERNAME_ANDA/sistem-perpustakaan-oop.git](https://github.com/USERNAME_ANDA/sistem-perpustakaan-oop.git)
+Buat database baru di MySQL bernama db_perpustakaan.
+
+Import file database.sql yang ada di folder ini ke database tersebut.
+
+Sesuaikan konfigurasi database di config/Database.php jika perlu.
+
+Buka project di browser (misal: http://localhost/sistem-perpustakaan).
+
+📂 Struktur Folder
+Plaintext
+
+sistem-perpustakaan/
+|-- config/          # Koneksi Database
+|-- src/
+|   |-- Abstracts/   # Class Abstrak (Person)
+|   |-- Entities/    # Class Utama (Book, Member, dll)
+|   |-- Exceptions/  # Custom Error Handling
+|   |-- Interfaces/  # Kontrak Interface
+|-- database.sql     # File Import SQL
+|-- index.php        # Entry Point
+
+---
+
+### 4. Eksekusi Upload ke GitHub (Terminal)
+
+Sekarang folder Anda sudah lengkap (ada Source Code + SQL + Gitignore + Readme). Saatnya kirim ke GitHub.
+
+Buka Terminal VS Code (`Ctrl + ~`), lalu jalankan perintah ini satu per satu:
+
+```powershell
+# 1. Pastikan di folder proyek
+git init
+
+# 2. Masukkan semua file (termasuk SQL dan Readme yg baru dibuat)
+git add .
+
+# 3. Simpan perubahan
+git commit -m "First commit: Sistem Perpustakaan OOP Lengkap"
+
+# 4. Ganti nama cabang utama
+git branch -M main
+
+# 5. Hubungkan ke GitHub (GANTI URL DI BAWAH DENGAN LINK REPO ANDA)
+git remote add origin https://github.com/USERNAME_ANDA/sistem-perpustakaan-oop.git
+
+# 6. Kirim!
+git push -u origin main
