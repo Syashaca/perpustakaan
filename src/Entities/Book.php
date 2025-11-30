@@ -3,6 +3,7 @@ require_once __DIR__ . '/../../config/Database.php';
 require_once __DIR__ . '/../Interfaces/IPersistable.php';
 require_once __DIR__ . '/../Interfaces/ILoanable.php';
 require_once __DIR__ . '/../Exceptions/StockEmptyException.php';
+require_once __DIR__ . '/../Exceptions/BookNotFoundException.php';
 
 class Book implements IPersistable, ILoanable {
     private $conn;
@@ -20,7 +21,7 @@ class Book implements IPersistable, ILoanable {
         $this->stock = $stock;
     }
 
-    // --- CRUD METHODS (PDO Prepared Statement) ---
+    // --- IMPLEMENTASI INTERFACE IPersistable ---
     public function save() {
         $sql = "INSERT INTO books (title, author, category_id, stock) VALUES (:t, :a, :c, :s)";
         $stmt = $this->conn->prepare($sql);
@@ -31,9 +32,14 @@ class Book implements IPersistable, ILoanable {
         return "Buku '{$this->title}' berhasil disimpan (ID: {$this->id})";
     }
 
+    // [UPDATED] Method ini sekarang mengambil nama kategori juga
     public static function getAll() {
         $conn = Database::getInstance();
-        $stmt = $conn->query("SELECT * FROM books");
+        $sql = "SELECT b.*, c.name as category_name 
+                FROM books b
+                LEFT JOIN categories c ON b.category_id = c.id
+                ORDER BY b.title ASC";
+        $stmt = $conn->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -42,24 +48,24 @@ class Book implements IPersistable, ILoanable {
         return $stmt->execute([':id' => $id]);
     }
 
-    // Helper untuk load by ID
+    // Method Static untuk mencari buku
     public static function find($id) {
         $conn = Database::getInstance();
         $stmt = $conn->prepare("SELECT * FROM books WHERE id = :id");
         $stmt->execute([':id' => $id]);
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        if(!$data) throw new BookNotFoundException(); // Lempar Exception 1
+        if(!$data) throw new BookNotFoundException(); 
 
         $book = new Book($data['title'], $data['author'], $data['category_id'], $data['stock']);
         $book->id = $data['id'];
         return $book;
     }
 
-    // --- LOAN METHODS ---
+    // --- IMPLEMENTASI INTERFACE ILoanable ---
     public function borrow() {
         if ($this->stock <= 0) {
-            throw new StockEmptyException(); // Lempar Exception 2
+            throw new StockEmptyException();
         }
         $this->stock--;
         $stmt = $this->conn->prepare("UPDATE books SET stock = :s WHERE id = :id");

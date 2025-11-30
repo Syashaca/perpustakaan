@@ -5,4 +5,6 @@ class Member extends Person {
     public function getRole() {
         return "Anggota Perpustakaan";
     }
+    // Tidak ada setting $this->image disini, 
+    // jadi otomatis pakai Inisial (Logic dari Parent Class)
 }
